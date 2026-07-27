@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LegendVerse | Rithika S - Computer Science Engineer</title>
+  <meta name="description" content="LegendVerse - Luxury interactive personal exhibition and future-ready engineering portfolio of Rithika S, 2nd Year Computer Science Engineering student at SRIT Coimbatore.">
+  
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons for Luxury UI Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Multi-Layer Architectural Parallax Canvas Background -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="glass-reflection-overlay"></div>
+  <div class="light-ray-container"></div>
+  <div class="fog-layer fog-layer-1"></div>
+  <div class="fog-layer fog-layer-2"></div>
+
+  <!-- Cinematic Loading Intro Overlay -->
+  <div id="intro-overlay" class="active">
+    <div class="intro-content">
+      <div class="intro-brand">
+        <span class="brand-sub">AN EXHIBITION BY RITHIKA S</span>
+        <h1 class="intro-title">LEGENDVERSE</h1>
+        <div class="loading-bar-wrapper">
+          <div class="loading-bar-fill" id="loading-bar"></div>
+        </div>
+        <p class="loading-status" id="loading-text">Loading Experience...</p>
+      </div>
+
+      <!-- Cinematic Intro Video Card -->
+      <div class="intro-video-card" id="intro-video-container">
+        <div class="video-glass-frame">
+          <div class="video-header">
+            <span class="video-badge"><i class="fa-solid fa-circle-play"></i> Welcome Video</span>
+            <span class="video-speaker-tag">Rithika S • SRIT Coimbatore</span>
+          </div>
+          <div class="video-viewport">
+            <video id="intro-video-player" poster="intro_video_poster.jpg" playsinline muted loop>
+              <source src="" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="canvas-video-fallback" id="canvas-video-fallback">
+              <canvas id="intro-video-canvas"></canvas>
+              <div class="video-fallback-content">
+                <div class="avatar-ring">
+                  <img src="rithika_avatar.jpg" alt="Rithika S" class="intro-avatar-img">
+                </div>
+                <h3>Hi, I am Rithika S</h3>
+                <p>Welcome to my luxury interactive career showcase</p>
+                <button class="voice-welcome-btn" id="voice-welcome-btn">
+                  <i class="fa-solid fa-volume-high"></i> Listen to Welcome Voice
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enter Platform Button -->
+      <div class="enter-btn-wrapper">
+        <button id="enter-btn" class="btn-enter disabled" disabled>
+          <span>ENTER LEGENDVERSE</span>
+          <i class="fa-solid fa-arrow-right-long"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Floating Glass Navigation Header -->
+  <header id="main-header">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo">
+        <span class="logo-dot"></span>
+        <span class="logo-text">LEGENDVERSE</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#origin" class="nav-link"><i class="fa-solid fa-compass"></i> Origin</a>
+        <a href="#abilities" class="nav-link"><i class="fa-solid fa-bolt"></i> Abilities</a>
+        <a href="#creations" class="nav-link"><i class="fa-solid fa-cubes"></i> Creations</a>
+        <a href="#milestones" class="nav-link"><i class="fa-solid fa-award"></i> Milestones</a>
+        <a href="#evolution" class="nav-link"><i class="fa-solid fa-chart-line"></i> Evolution</a>
+        <a href="#passions" class="nav-link"><i class="fa-solid fa-heart"></i> Passions</a>
+        <a href="#connect" class="nav-link"><i class="fa-solid fa-paper-plane"></i> Connect</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="admin-trigger-btn" id="admin-trigger-btn" title="Owner Admin Login">
+          <i class="fa-solid fa-key"></i>
+          <span class="admin-btn-label">Owner Access</span>
+        </button>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Nav -->
+    <div class="mobile-nav-drawer" id="mobile-drawer">
+      <a href="#origin" class="mobile-link">Origin</a>
+      <a href="#abilities" class="mobile-link">Abilities</a>
+      <a href="#creations" class="mobile-link">Creations</a>
+      <a href="#milestones" class="mobile-link">Milestones</a>
+      <a href="#evolution" class="mobile-link">Evolution</a>
+      <a href="#passions" class="mobile-link">Passions</a>
+      <a href="#connect" class="mobile-link">Connect</a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrappers -->
+  <main id="main-content">
+
+    <!-- HOME / HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="section-container hero-grid">
+        <div class="hero-text-content">
+          <div class="badge-pill">
+            <span class="pulse-dot"></span>
+            <span>SRIT COIMBATORE • 2ND YEAR CSE STUDENT</span>
+          </div>
+
+          <h1 class="hero-title">
+            Welcome to <span class="accent-gradient">LegendVerse</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Explore my journey, skills and creations. An award-winning luxury personal brand exhibition and future-ready computer science engineering platform.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#origin" class="btn btn-primary">
+              <span>Explore Journey</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            <button id="hero-resume-btn" class="btn btn-secondary">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>Download Resume</span>
+            </button>
+            <a href="#connect" class="btn btn-outline">
+              <i class="fa-solid fa-envelope"></i>
+              <span>Contact</span>
+            </a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric-card">
+              <span class="metric-val" id="metric-views">1,420+</span>
+              <span class="metric-lbl">Exhibition Visits</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-card">
+              <span class="metric-val" id="metric-likes">384</span>
+              <span class="metric-lbl">Appreciations</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-card">
+              <span class="metric-val" id="metric-rating">4.9 ★</span>
+              <span class="metric-lbl">Platform Score</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-media-card">
+          <div class="glass-frame hero-frame">
+            <div class="frame-light-sweeper"></div>
+            <div class="hero-card-header">
+              <span class="status-chip"><i class="fa-solid fa-video"></i> Featured Intro Video</span>
+              <button class="play-hero-video-btn" id="hero-play-video-btn">
+                <i class="fa-solid fa-play"></i> Watch Fullscreen
+              </button>
+            </div>
+            <div class="hero-card-media" style="position:relative;">
+              <video id="hero-video-player" playsinline muted style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; display:none;"></video>
+              <img src="intro_video_poster.jpg" alt="Rithika S Intro Poster" id="hero-poster-img" style="width:100%; height:100%; object-fit:cover;">
+              <div class="hero-media-overlay" id="hero-media-overlay">
+                <button class="hero-media-play-icon" id="hero-media-play-icon">
+                  <i class="fa-solid fa-play"></i>
+                </button>
+                <div class="hero-media-info">
+                  <h4 id="hero-video-title">Personal Intro Video by Rithika S</h4>
+                  <p id="hero-video-desc">Short welcome presentation detailing engineering goals and creative projects.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME SECTION (ORIGIN) -->
+    <section id="origin" class="section-padding">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">CHAPTER 01</span>
+          <h2 class="section-title">Origin & Narrative</h2>
+          <div class="header-line"></div>
+        </div>
+
+        <div class="about-grid">
+          <!-- Left: 3D Avatar Profile Glass Frame -->
+          <div class="about-avatar-col">
+            <div class="avatar-glass-card">
+              <div class="glass-shine"></div>
+              <div class="avatar-frame-inner">
+                <img src="rithika_avatar.jpg" alt="Rithika S" class="avatar-image" id="origin-avatar-img">
+              </div>
+              <div class="avatar-badge-bar">
+                <div class="avatar-badge-item">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <span>SRIT Coimbatore</span>
+                </div>
+                <div class="avatar-badge-item">
+                  <i class="fa-solid fa-code"></i>
+                  <span>2nd Year CSE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: My Story & Horizontal Info Cards -->
+          <div class="about-story-col">
+            <div class="story-header">
+              <h3 class="story-heading">My Story</h3>
+              <button class="btn-listen" id="origin-listen-btn">
+                <i class="fa-solid fa-volume-high" id="listen-icon"></i>
+                <span id="listen-btn-text">Listen to Story Voice</span>
+              </button>
+            </div>
+
+            <div class="story-card">
+              <p class="story-quote">
+                "I am Rithika S, a 2nd year Computer Science Engineering student at SRIT Coimbatore. I am passionate about technology, creativity, digital experiences and building innovative solutions."
+              </p>
+              <p class="story-extended" id="origin-extended-story">
+                Driven by a curiosity for how algorithms shape human experience, I specialize in modern software architecture, artificial intelligence applications, and high-performance interactive media. My journey at SRIT Coimbatore focuses on mastering computational fundamentals while pioneering intuitive, high-craft user interfaces.
+              </p>
+            </div>
+
+            <!-- Horizontal Information Cards -->
+            <div class="horizontal-info-cards">
+              <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-building-columns"></i></div>
+                <div class="info-details">
+                  <span class="info-label">College</span>
+                  <strong class="info-value" id="info-college">SRIT Coimbatore</strong>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <div class="info-details">
+                  <span class="info-label">Department</span>
+                  <strong class="info-value" id="info-dept">B.Tech Computer Science Engineering</strong>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                <div class="info-details">
+                  <span class="info-label">Academic Year</span>
+                  <strong class="info-value" id="info-year">2nd Year Engineering</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Education & Journey Timeline Tabs -->
+            <div class="story-timeline-section">
+              <h4 class="sub-heading"><i class="fa-solid fa-timeline"></i> Education & Milestones</h4>
+              <div class="timeline-container" id="education-timeline">
+                <!-- Injected via app.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABILITIES SECTION -->
+    <section id="abilities" class="section-padding alt-bg">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-tag">CHAPTER 02</span>
+          <h2 class="section-title">Mastered Abilities</h2>
+          <p class="section-subtitle">An interactive exhibition of technical competencies and soft skills.</p>
+        </div>
+
+        <!-- Category Tabs Switcher -->
+        <div class="category-tabs-wrapper">
+          <button class="cat-tab active" data-ability-cat="technical">
+            <i class="fa-solid fa-microchip"></i> Technical Abilities
+          </button>
+          <button class="cat-tab" data-ability-cat="soft">
+            <i class="fa-solid fa-brain"></i> Soft Abilities
+          </button>
+        </div>
+
+        <!-- Technical Abilities Grid -->
+        <div class="abilities-grid active" id="tech-abilities-grid">
+          <!-- Injected via app.js -->
+        </div>
+
+        <!-- Soft Abilities Grid -->
+        <div class="abilities-grid hidden" id="soft-abilities-grid">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CREATIONS / PROJECTS SECTION -->
+    <section id="creations" class="section-padding">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">CHAPTER 03</span>
+          <h2 class="section-title">Interactive Creations</h2>
+          <p class="section-subtitle">A luxury showcase of software applications, games, AI models, and creative digital works.</p>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="filter-tabs" id="project-filter-tabs">
+          <button class="filter-btn active" data-filter="All">All Works</button>
+          <button class="filter-btn" data-filter="Games">Games</button>
+          <button class="filter-btn" data-filter="Websites">Websites</button>
+          <button class="filter-btn" data-filter="Apps">Apps</button>
+          <button class="filter-btn" data-filter="AI Projects">AI Projects</button>
+          <button class="filter-btn" data-filter="Creative Projects">Creative Projects</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid">
+          <!-- Injected via app.js -->
+        </div>
+
+        <!-- Privacy Disclaimer Note -->
+        <div class="privacy-note-banner">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Privacy Note: Some project details and source code elements are protected for privacy and intellectual property purposes.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MILESTONES / CERTIFICATES & ACHIEVEMENTS -->
+    <section id="milestones" class="section-padding alt-bg">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-tag">CHAPTER 04</span>
+          <h2 class="section-title">Museum of Milestones</h2>
+          <p class="section-subtitle">Certified achievements, hackathon victories, and academic honor roll.</p>
+        </div>
+
+        <!-- Milestone Tabs: Certificates vs Achievements -->
+        <div class="category-tabs-wrapper">
+          <button class="cat-tab active" data-milestone-tab="certificates">
+            <i class="fa-solid fa-certificate"></i> Certificates Gallery
+          </button>
+          <button class="cat-tab" data-milestone-tab="achievements">
+            <i class="fa-solid fa-trophy"></i> Sports & Hackathons
+          </button>
+        </div>
+
+        <!-- Certificates Panel -->
+        <div class="milestones-panel active" id="certificates-panel">
+          <div class="cert-filter-bar" id="cert-filter-bar">
+            <button class="sub-filter-btn active" data-cert-cat="All">All Categories</button>
+            <button class="sub-filter-btn" data-cert-cat="Engineering & Code">Engineering & Code</button>
+            <button class="sub-filter-btn" data-cert-cat="AI & Data">AI & Data</button>
+            <button class="sub-filter-btn" data-cert-cat="Design & Media">Design & Media</button>
+          </div>
+
+          <div class="certificates-grid" id="certificates-grid">
+            <!-- Injected via app.js -->
+          </div>
+        </div>
+
+        <!-- Achievements Panel -->
+        <div class="milestones-panel hidden" id="achievements-panel">
+          <div class="achievements-grid" id="achievements-grid">
+            <!-- Injected via app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVOLUTION / CURRENT PROGRESS -->
+    <section id="evolution" class="section-padding">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">CHAPTER 05</span>
+          <h2 class="section-title">Evolution & Learning Roadmap</h2>
+          <p class="section-subtitle">Real-time track of skills being mastered and future technology horizons.</p>
+        </div>
+
+        <div class="evolution-grid">
+          <!-- New Technologies Being Mastered -->
+          <div class="evolution-card glass-card">
+            <h3 class="card-heading"><i class="fa-solid fa-rocket"></i> Currently Learning</h3>
+            <div class="tech-progress-list" id="currently-learning-list">
+              <!-- Injected via app.js -->
+            </div>
+          </div>
+
+          <!-- Skills Improving -->
+          <div class="evolution-card glass-card">
+            <h3 class="card-heading"><i class="fa-solid fa-chart-line"></i> Skills Improving</h3>
+            <ul class="bullet-list" id="skills-improving-list">
+              <!-- Injected via app.js -->
+            </ul>
+          </div>
+
+          <!-- Current Active Projects -->
+          <div class="evolution-card glass-card">
+            <h3 class="card-heading"><i class="fa-solid fa-gears"></i> Current Projects</h3>
+            <ul class="bullet-list" id="current-projects-list">
+              <!-- Injected via app.js -->
+            </ul>
+          </div>
+
+          <!-- Future Goals Roadmap -->
+          <div class="evolution-card glass-card">
+            <h3 class="card-heading"><i class="fa-solid fa-bullseye"></i> Future Goals</h3>
+            <ul class="bullet-list" id="future-goals-list">
+              <!-- Injected via app.js -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PASSIONS SECTION -->
+    <section id="passions" class="section-padding alt-bg">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-tag">CHAPTER 06</span>
+          <h2 class="section-title">Creative Passions</h2>
+          <p class="section-subtitle">Interests and creative pursuits that fuel engineering innovation.</p>
+        </div>
+
+        <div class="passions-grid" id="passions-grid">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CONNECT / CONTACT SECTION -->
+    <section id="connect" class="section-padding">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">CHAPTER 07</span>
+          <h2 class="section-title">Connect & Collaborate</h2>
+          <p class="section-subtitle">Get in touch for technical projects, research collaborations, or engineering inquiries.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Direct Links Card -->
+          <div class="contact-info-card glass-card">
+            <h3>Direct Channels</h3>
+            <p>Feel free to reach out via official campus email or connect on technical platforms.</p>
+
+            <div class="contact-channels">
+              <a href="mailto:rithika.s@srit.ac.in" class="channel-link" id="contact-email-link">
+                <div class="channel-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="channel-text">
+                  <span>Email</span>
+                  <strong id="contact-email-val">rithika.s@srit.ac.in</strong>
+                </div>
+              </a>
+
+              <a href="https://github.com/rithika-s" target="_blank" rel="noopener" class="channel-link" id="contact-github-link">
+                <div class="channel-icon"><i class="fa-brands fa-github"></i></div>
+                <div class="channel-text">
+                  <span>GitHub</span>
+                  <strong>github.com/rithika-s</strong>
+                </div>
+              </a>
+
+              <a href="https://linkedin.com/in/rithika-s" target="_blank" rel="noopener" class="channel-link" id="contact-linkedin-link">
+                <div class="channel-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                <div class="channel-text">
+                  <span>LinkedIn</span>
+                  <strong>linkedin.com/in/rithika-s</strong>
+                </div>
+              </a>
+
+              <a href="https://instagram.com/rithika.s.code" target="_blank" rel="noopener" class="channel-link" id="contact-instagram-link">
+                <div class="channel-icon"><i class="fa-brands fa-instagram"></i></div>
+                <div class="channel-text">
+                  <span>Instagram</span>
+                  <strong>@rithika.s.code</strong>
+                </div>
+              </a>
+            </div>
+
+            <div class="resume-download-box">
+              <button class="btn btn-primary full-width" id="connect-download-resume-btn">
+                <i class="fa-solid fa-file-pdf"></i>
+                <span>Preview & Download Official Resume</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-card glass-card">
+            <h3>Send Message</h3>
+            <form id="contact-form">
+              <div class="form-group">
+                <label for="form-name">Your Name</label>
+                <input type="text" id="form-name" placeholder="Enter your full name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="form-email">Your Email Address</label>
+                <input type="email" id="form-email" placeholder="name@domain.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="form-subject">Subject</label>
+                <input type="text" id="form-subject" placeholder="Project Inquiry / Collaboration" required>
+              </div>
+
+              <div class="form-group">
+                <label for="form-message">Message</label>
+                <textarea id="form-message" rows="4" placeholder="Write your message here..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary full-width">
+                <span>Send Message</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER SECTION -->
+  <footer id="main-footer">
+    <div class="section-container footer-content">
+      <div class="footer-brand-block">
+        <h3 class="footer-title">LEGENDVERSE</h3>
+        <p class="footer-thanks">Thank you for exploring LegendVerse.</p>
+        <p class="footer-tagline">Connect • Create • Inspire</p>
+      </div>
+
+      <!-- Rating & Like Widget -->
+      <div class="footer-interactive-block">
+        <div class="rating-widget">
+          <span>Rate My Portfolio:</span>
+          <div class="star-rating" id="star-rating">
+            <i class="fa-regular fa-star" data-star="1"></i>
+            <i class="fa-regular fa-star" data-star="2"></i>
+            <i class="fa-regular fa-star" data-star="3"></i>
+            <i class="fa-regular fa-star" data-star="4"></i>
+            <i class="fa-regular fa-star" data-star="5"></i>
+          </div>
+          <span class="rating-feedback" id="rating-feedback">Click stars to rate</span>
+        </div>
+
+        <div class="like-widget">
+          <button class="like-btn" id="like-btn">
+            <i class="fa-regular fa-heart" id="like-heart-icon"></i>
+            <span>Like Portfolio</span>
+          </button>
+          <span class="like-count" id="like-count">384 Likes</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 Rithika S. Computer Science Engineering, SRIT Coimbatore. All rights reserved.</p>
+        <button class="footer-admin-link" id="footer-admin-link">
+          <i class="fa-solid fa-user-shield"></i> Owner Access (Rithika S)
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="modal-glass-container">
+      <button class="modal-close-btn" id="project-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body" id="project-modal-body">
+        <!-- Injected via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATE DETAIL & VOICE MODAL -->
+  <div class="modal-overlay" id="cert-modal">
+    <div class="modal-glass-container cert-modal-width">
+      <button class="modal-close-btn" id="cert-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body" id="cert-modal-body">
+        <!-- Injected via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- PROOF VIEWER MODAL -->
+  <div class="modal-overlay" id="proof-modal">
+    <div class="modal-glass-container">
+      <button class="modal-close-btn" id="proof-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body" id="proof-modal-body">
+        <!-- Injected via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUME PREVIEW MODAL -->
+  <div class="modal-overlay" id="resume-modal">
+    <div class="modal-glass-container resume-modal-width">
+      <button class="modal-close-btn" id="resume-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header-bar">
+        <h3><i class="fa-solid fa-file-pdf"></i> Resume Preview - Rithika S</h3>
+        <button class="btn btn-primary btn-sm" id="download-actual-resume-btn">
+          <i class="fa-solid fa-download"></i> Download PDF
+        </button>
+      </div>
+      <div class="modal-body resume-body">
+        <div class="resume-paper">
+          <header class="resume-header">
+            <h2>RITHIKA S</h2>
+            <p class="resume-sub">2nd Year B.Tech Computer Science Engineering Student | SRIT Coimbatore</p>
+            <p class="resume-contact">Email: rithika.s@srit.ac.in | Phone: +91 98765 43210 | Location: Coimbatore, Tamil Nadu</p>
+          </header>
+          <hr>
+          <section class="resume-sec">
+            <h4>ACADEMIC SUMMARY</h4>
+            <p><strong>B.Tech in Computer Science and Engineering</strong> — SRIT Coimbatore (2024 - 2028)</p>
+            <p>Current CGPA: 9.2 / 10.0 | Department Rank: 1st Rank</p>
+          </section>
+          <section class="resume-sec">
+            <h4>TECHNICAL PROFICIENCIES</h4>
+            <p><strong>Languages:</strong> Python, JavaScript (ES6+), C++, Java, HTML5, CSS3, SQL</p>
+            <p><strong>AI & Web Frameworks:</strong> PyTorch, OpenCV, Flutter, Node.js, WebGL Canvas, LocalStorage CMS</p>
+          </section>
+          <section class="resume-sec">
+            <h4>FEATURED CREATIONS</h4>
+            <p><strong>LegendVerse Platform:</strong> Luxury interactive career exhibition website with Speech API & CMS.</p>
+            <p><strong>Neural Vision Diagnostic AI:</strong> Sub-100ms computer vision anomaly detection tool.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN LOGIN MODAL -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal-glass-container login-box">
+      <button class="modal-close-btn" id="login-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="login-header">
+        <div class="lock-icon"><i class="fa-solid fa-user-shield"></i></div>
+        <h3>Owner Portal Login</h3>
+        <p>Access restricted strictly to Rithika S.</p>
+      </div>
+      <form id="admin-login-form">
+        <div class="form-group">
+          <label for="admin-email">Owner Email</label>
+          <input type="email" id="admin-email" placeholder="owner@example.com" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="admin-password">Password</label>
+          <input type="password" id="admin-password" placeholder="Enter password" required autocomplete="current-password">
+        </div>
+        <p class="login-error" id="login-error-msg"></p>
+        <button type="submit" class="btn btn-primary full-width" id="admin-login-submit-btn">
+          <i class="fa-solid fa-right-to-bracket"></i> Login to Dashboard
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- OWNER ADMIN DASHBOARD & CMS MODAL -->
+  <div class="modal-overlay" id="admin-modal">
+    <div class="modal-glass-container admin-dashboard-container">
+      <div class="admin-header-bar">
+        <div class="admin-title-group">
+          <h2><i class="fa-solid fa-sliders"></i> LegendVerse Control Panel</h2>
+          <span class="owner-badge"><i class="fa-solid fa-circle-check"></i> Logged in as Rithika S</span>
+        </div>
+        <div class="admin-top-actions">
+          <button class="btn btn-outline btn-sm" id="admin-logout-btn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+          </button>
+          <button class="modal-close-btn relative-close" id="admin-modal-close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <!-- Analytics Cards -->
+      <div class="admin-analytics-row">
+        <div class="admin-stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-eye"></i></div>
+          <div class="stat-info">
+            <span class="stat-label">Total Platform Views</span>
+            <strong class="stat-value" id="cms-total-views">1,420</strong>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-heart"></i></div>
+          <div class="stat-info">
+            <span class="stat-label">Total Likes</span>
+            <strong class="stat-value" id="cms-total-likes">384</strong>
+          </div>
+        </div>
+
+        <div class="admin-stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+          <div class="stat-info">
+            <span class="stat-label">Average User Rating</span>
+            <strong class="stat-value" id="cms-avg-rating">4.9 / 5.0</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- CMS Navigation Tabs -->
+      <div class="cms-nav-tabs">
+        <button class="cms-tab active" data-cms-tab="projects"><i class="fa-solid fa-cubes"></i> Projects</button>
+        <button class="cms-tab" data-cms-tab="certificates"><i class="fa-solid fa-certificate"></i> Certificates</button>
+        <button class="cms-tab" data-cms-tab="abilities"><i class="fa-solid fa-bolt"></i> Abilities</button>
+        <button class="cms-tab" data-cms-tab="achievements"><i class="fa-solid fa-trophy"></i> Achievements</button>
+        <button class="cms-tab" data-cms-tab="about"><i class="fa-solid fa-user-pen"></i> About Me</button>
+        <button class="cms-tab" data-cms-tab="evolution"><i class="fa-solid fa-rocket"></i> Evolution</button>
+        <button class="cms-tab" data-cms-tab="video"><i class="fa-solid fa-film"></i> Intro Video</button>
+        <button class="cms-tab" data-cms-tab="media"><i class="fa-solid fa-photo-film"></i> Media Gallery</button>
+        <button class="cms-tab" data-cms-tab="contact"><i class="fa-solid fa-address-book"></i> Contact</button>
+        <button class="cms-tab" data-cms-tab="profile"><i class="fa-solid fa-shield-halved"></i> Profile & Security</button>
+      </div>
+
+      <!-- CMS Tab Contents -->
+      <div class="cms-tab-content-area" id="cms-content-area">
+        <!-- Injected via cms.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <!-- Firebase SDK (Compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+
+  <script src="firebase-config.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script src="cms.js"></script>
+</body>
+</html>
