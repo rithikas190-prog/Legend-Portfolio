@@ -147,8 +147,4 @@ Design principles:
 ## Deployment 🚀
 
 - GitHub
-- Vercel
 
----
-
-# 🔄 Project Workflow
